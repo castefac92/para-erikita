@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Para Erika ❤️</title>
+<title>Para mi Bob Esponja ❤️</title>
 
 <style>
 
@@ -16,57 +15,55 @@ font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-
-background:#050505;
+background:#050816;
 overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
 color:white;
-
 }
 
-#stars{
-
+#background{
 position:fixed;
 width:100%;
 height:100%;
 background:
-radial-gradient(white 1px,transparent 1px);
-background-size:40px 40px;
-animation:moveStars 60s linear infinite;
-opacity:.4;
-
+radial-gradient(circle at center,#16213e 0%,#050816 100%);
+z-index:-2;
 }
 
-@keyframes moveStars{
+#stars{
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(white 1px,transparent 1px);
+background-size:40px 40px;
+opacity:.3;
+animation:stars 80s linear infinite;
+z-index:-1;
+}
 
+@keyframes stars{
 from{transform:translateY(0);}
 to{transform:translateY(800px);}
-
 }
 
 .container{
-
-position:relative;
-z-index:5;
 text-align:center;
-
+padding:20px;
 }
 
 h1{
-
-font-size:55px;
+font-size:60px;
 margin-bottom:20px;
-
 }
 
 p{
-
+font-size:20px;
 opacity:.8;
-margin-bottom:35px;
-
+margin-bottom:40px;
 }
 
 button{
@@ -76,13 +73,10 @@ font-size:24px;
 border:none;
 border-radius:50px;
 cursor:pointer;
-
-background:#00d2ff;
+background:#00c3ff;
 color:white;
-
 transition:.3s;
-
-box-shadow:0 0 40px #00d2ff;
+box-shadow:0 0 25px #00c3ff;
 
 }
 
@@ -92,38 +86,20 @@ transform:scale(1.08);
 
 }
 
-#loading{
+#mensaje{
 
 display:none;
-
-font-size:26px;
-
+font-size:30px;
 line-height:60px;
 
 }
 
-.glitch{
-
-animation:glitch .15s infinite;
-
-}
-
-@keyframes glitch{
-
-0%{transform:translate(2px,-2px);}
-25%{transform:translate(-2px,2px);}
-50%{transform:translate(2px,2px);}
-75%{transform:translate(-2px,-2px);}
-100%{transform:translate(0,0);}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
+<div id="background"></div>
 <div id="stars"></div>
 
 <div class="container" id="inicio">
@@ -132,91 +108,47 @@ animation:glitch .15s infinite;
 
 <p>Verificación requerida</p>
 
-<button onclick="iniciar()">
-
+<button onclick="comenzar()">
 🤖 Soy un androide
-
 </button>
 
 </div>
 
-<div class="container" id="loading">
-
-<p id="texto"></p>
-
-</div>
+<div class="container" id="mensaje"></div>
 
 <script>
 
-function esperar(ms){
-
+async function esperar(ms){
 return new Promise(r=>setTimeout(r,ms));
-
 }
 
-async function iniciar(){
+async function comenzar(){
 
 document.getElementById("inicio").style.display="none";
 
-let loading=document.getElementById("loading");
+let m=document.getElementById("mensaje");
 
-loading.style.display="block";
+m.style.display="block";
 
-loading.classList.add("glitch");
-
-let t=document.getElementById("texto");
-
-t.innerHTML="Inicializando sistema...";
-
-await esperar(2000);
-
-t.innerHTML="Escaneando usuario...";
-
-await esperar(2000);
-
-t.innerHTML="✔ IA detectada";
-
-await esperar(1200);
-
-t.innerHTML+="<br>✔ Sonrisa hermosa encontrada";
-
-await esperar(1200);
-
-t.innerHTML+="<br>✔ Corazón compatible";
-
+m.innerHTML="Inicializando sistema...";
 await esperar(1800);
 
-t.innerHTML="<span style='color:red;font-size:42px;'>ERROR</span>";
+m.innerHTML="Escaneando usuario...";
+await esperar(1800);
 
-await esperar(1500);
+m.innerHTML="✔ IA detectada";
+await esperar(1200);
 
-t.innerHTML="Los androides no pueden enamorarse...";
+m.innerHTML+="<br>✔ Mi Bob Esponja encontrada ❤️";
+await esperar(1600);
 
-await esperar(3000);
+m.innerHTML="<span style='color:#ff4d6d;font-size:42px;'>ERROR</span>";
+await esperar(1800);
 
-t.innerHTML="";
+m.innerHTML="Los androides no deberían enamorarse...";
+await esperar(2500);
 
-loading.classList.remove("glitch");
-
-document.body.style.background="#111";
-
-document.body.innerHTML="
-
-<div style='display:flex;justify-content:center;align-items:center;height:100vh;flex-direction:column;color:white;text-align:center;'>
-
-<h1 style='font-size:60px;'>❤️</h1>
-
-<h2 style='font-size:55px;'>Pero tú cambiaste eso.</h2>
-
-<p style='font-size:24px;margin-top:30px;'>
-
-Próximamente aparecerá la historia...
-
-</p>
-
-</div>
-
-";
+m.innerHTML="<h1>❤️</h1><br><h2>Pero tú cambiaste eso.</h2><br><br><p>Continuará...</p>";
 
 }
 
